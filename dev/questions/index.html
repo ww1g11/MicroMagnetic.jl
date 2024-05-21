@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Questions · MicroMag.jl</title><meta name="title" content="Questions · MicroMag.jl"/><meta property="og:title" content="Questions · MicroMag.jl"/><meta property="twitter:title" content="Questions · MicroMag.jl"/><meta name="description" content="Documentation for MicroMag.jl."/><meta property="og:description" content="Documentation for MicroMag.jl."/><meta property="twitter:description" content="Documentation for MicroMag.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><script src="../assets/init.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">MicroMag.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../basics/">Basics</a></li><li><a class="tocitem" href="../functions/">API</a></li><li><a class="tocitem" href="../developer/">Developers</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Questions</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Questions</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/ww1g11/MicroMag.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/ww1g11/MicroMag.jl/blob/master/docs/src/questions.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Questions"><a class="docs-heading-anchor" href="#Questions">Questions</a><a id="Questions-1"></a><a class="docs-heading-anchor-permalink" href="#Questions" title="Permalink"></a></h1><h3 id="How-the-magnetization-is-stored-in-the-array-spin?"><a class="docs-heading-anchor" href="#How-the-magnetization-is-stored-in-the-array-spin?">How the magnetization is stored in the array <code>spin</code>?</a><a id="How-the-magnetization-is-stored-in-the-array-spin?-1"></a><a class="docs-heading-anchor-permalink" href="#How-the-magnetization-is-stored-in-the-array-spin?" title="Permalink"></a></h3><p>In MicroMag, the magnetization is stored in a 1D array with the form <span>$[m_{1,x}, m_{1, y}, m_{1, z}, ..., m_{n,x}, m_{n, y}, m_{n, z}]$</span></p><h3 id="How-to-get-the-global-index-of-magnetization-at-site-(i,j,k)-?"><a class="docs-heading-anchor" href="#How-to-get-the-global-index-of-magnetization-at-site-(i,j,k)-?">How to get the global index of magnetization at site <span>$(i,j,k)$</span> ?</a><a id="How-to-get-the-global-index-of-magnetization-at-site-(i,j,k)-?-1"></a><a class="docs-heading-anchor-permalink" href="#How-to-get-the-global-index-of-magnetization-at-site-(i,j,k)-?" title="Permalink"></a></h3><p>In MicroMag, the global index can be obtained using the following function</p><pre><code class="language-julia hljs">function index(i::Int64, j::Int64, k::Int64, nx::Int64, ny::Int64, nz::Int64)
+    if i &lt; 1 || j &lt; 1 || k &lt; 1 || k &gt; nz || j &gt; ny || i &gt; nx
+        return -1
+    end
+    return (k-1) * nx*ny + (j-1) * nx + i
+end</code></pre><h3 id="How-to-get-the-effective-field-at-site-(i,j,k)?"><a class="docs-heading-anchor" href="#How-to-get-the-effective-field-at-site-(i,j,k)?">How to get the effective field at site <span>$(i,j,k)$</span>?</a><a id="How-to-get-the-effective-field-at-site-(i,j,k)?-1"></a><a class="docs-heading-anchor-permalink" href="#How-to-get-the-effective-field-at-site-(i,j,k)?" title="Permalink"></a></h3><p>The effective field is stored in the same form of the magnetization, so the effective at site <code>(i,j,k)</code> can be extracted using</p><pre><code class="language-julia hljs">  id = index(i,j,k, nx, ny, nz)
+  fx = sim.field[3*id-2]
+  fy = sim.field[3*id-1]
+  fz = sim.field[3*id]</code></pre><p>Alternatively, we can use reshape function</p><pre><code class="language-julia hljs">  f = reshape(sim.field, 3, nx, ny, nz)
+  fx,fy,fz = f[:, i,j,k]</code></pre><h3 id="How-to-run-MicroMag-in-a-cluster-node-with-multiple-GPUs?"><a class="docs-heading-anchor" href="#How-to-run-MicroMag-in-a-cluster-node-with-multiple-GPUs?">How to run MicroMag in a cluster node with multiple GPUs?</a><a id="How-to-run-MicroMag-in-a-cluster-node-with-multiple-GPUs?-1"></a><a class="docs-heading-anchor-permalink" href="#How-to-run-MicroMag-in-a-cluster-node-with-multiple-GPUs?" title="Permalink"></a></h3><p>In the long run, MicroMag will support multiple GPUs. However, here we discuss the common scenario that one needs to change some parameters systematically, such as the geometry size, or cell size, or external field, or charge current as a driving force. In these cases, the simulation can be run in parallel since they are independent tasks. Here is a demo that using 4 GPUs to relax the system with different sizes. </p><pre><code class="language-julia hljs">@everywhere using MicroMag
+@everywhere using Printf
+@everywhere using CUDAnative
+
+@everywhere function relax_system(Nx, gpu_id)
+
+  device!(gpu_id)  #using the gpu with gpu_id
+
+  mesh =  FDMeshGPU(nx=Nx, ny=50, nz=1, dx=2.5e-9, dy=2.5e-9, dz=3e-9)
+
+  name = @sprintf(&quot;Nx_%d&quot;, Nx)
+  sim = Sim(mesh, name=name, driver=&quot;SD&quot;)
+  set_Ms(sim, 8.0e5)
+  sim.driver.min_tau = 1e-10
+
+  add_exch(sim, 1.3e-11)
+  add_demag(sim)
+
+  init_m0(sim, (1, 0.25, 0.1))
+
+  relax(sim, maxsteps=5000, stopping_torque=1.0)
+
+  return nothing
+end
+
+Nx = [i for i in 200:20:400]
+for i = 1:4:length(Nx)
+    r1 = remotecall(relax_system, 1, Nx[i], 0)
+    r2 = remotecall(relax_system, 2, Nx[i+1], 1)
+    r3 = remotecall(relax_system, 3, Nx[i+2], 2)
+    r4 = remotecall(relax_system, 4, Nx[i+3], 3)
+    fetch(r1)
+    fetch(r2)
+    fetch(r3)
+    fetch(r4)
+end</code></pre><p>Here is the corresponding Slurm script:</p><pre><code class="nohighlight hljs">#!/bin/bash
+#SBATCH --nodes=1             # Number of nodes
+#SBATCH --ntasks=1            # Number of tasks?
+#SBATCH --cpus-per-task=4     # Number of CPUs per task
+#SBATCH --gres=gpu:4          # Number of GPUs
+srun julia -p 4 main.jl</code></pre></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.4.1 on <span class="colophon-date" title="Tuesday 21 May 2024 11:38">Tuesday 21 May 2024</span>. Using Julia version 1.10.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
