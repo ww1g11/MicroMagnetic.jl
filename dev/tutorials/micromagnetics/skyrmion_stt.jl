@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using Printf
 
 @using_gpu()
@@ -11,7 +11,7 @@ init_m0_skyrmion(sim, (200e-9, 80e-9), 2e-8)
 
 relax(sim, maxsteps=20000, stopping_dmdt=0.01)
 
-MicroMag.save_vtk(sim, "skx")
+MicroMagnetic.save_vtk(sim, "skx")
 
 set_driver(sim, driver="LLG_STT", alpha=0.05, beta=0.2, ux=-20)
 

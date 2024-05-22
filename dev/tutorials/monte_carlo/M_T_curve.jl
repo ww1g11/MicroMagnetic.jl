@@ -1,6 +1,6 @@
-using MicroMag
+using MicroMagnetic
 
-#MicroMag.set_float(Float32)
+#MicroMagnetic.set_float(Float32)
 
 @using_gpu()
 
@@ -23,7 +23,7 @@ function relax_system_single(T)
   sim.T = T
   for i = 1:1000
       run_sim(sim, maxsteps=100, save_vtk_every=-1, save_m_every=-1)
-      t = MicroMag.average_m(sim)
+      t = MicroMagnetic.average_m(sim)
       ms[i] = sqrt(t[1]^2+t[2]^2+t[3]^2)
   end
   return sum(ms)/length(ms)

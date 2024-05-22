@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using CairoMakie
 
 mesh =  CubicMesh(nx=120, ny=120, nz=1, pbc="xy");

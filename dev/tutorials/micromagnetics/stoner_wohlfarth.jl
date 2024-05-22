@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 
 #We create a mesh for a cubic geometry 4nm x 4nm x 4nm
 mesh = FDMesh(nx=4, ny=4, nz=4, dx=1e-9, dy=1e-9, dz=1e-9);

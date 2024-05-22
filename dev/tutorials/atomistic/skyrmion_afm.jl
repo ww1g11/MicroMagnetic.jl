@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using Printf
 
 @using_gpu()

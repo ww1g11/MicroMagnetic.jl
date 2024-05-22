@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using NPZ
 
 @using_gpu()
@@ -51,20 +51,20 @@ function applied_current(mesh, ux, beta)
     io = open(fname,"w")
 
     #Use formatstring function to convert the contents into fixed-length string.
-    write(io, MicroMag.formatstring("time(s)"))
-    write(io, MicroMag.formatstring("X(m)"))
-    write(io, MicroMag.formatstring("Y(m)"))
+    write(io, MicroMagnetic.formatstring("time(s)"))
+    write(io, MicroMagnetic.formatstring("X(m)"))
+    write(io, MicroMagnetic.formatstring("Y(m)"))
     write(io, "\n")
 
     for i=0:800
         t = i * 1e-11
         run_until(sim, t)
         #compute the x,y coordinate of vortex center for layer 1.
-        Rx, Ry = MicroMag.compute_guiding_center(sim, z=1)
+        Rx, Ry = MicroMagnetic.compute_guiding_center(sim, z=1)
 
-        write(io, MicroMag.formatstring(t))
-        write(io, MicroMag.formatstring(Rx))
-        write(io, MicroMag.formatstring(Ry))
+        write(io, MicroMagnetic.formatstring(t))
+        write(io, MicroMagnetic.formatstring(Rx))
+        write(io, MicroMagnetic.formatstring(Ry))
         write(io, "\n")
 
         if i%20 ==0
@@ -130,9 +130,9 @@ function plot_m()
         xlabel = "Time (ns)",
         ylabel = "<M>"
     )
-    lines!(ax, ts, mx, linewidth=3,label="mx MicroMag")
-    lines!(ax, ts, my, linewidth=3,label="my MicroMag")
-    lines!(ax, ts, mz, linewidth=3,label="mz MicroMag")
+    lines!(ax, ts, mx, linewidth=3,label="mx MicroMagnetic")
+    lines!(ax, ts, my, linewidth=3,label="my MicroMagnetic")
+    lines!(ax, ts, mz, linewidth=3,label="mz MicroMagnetic")
 
     data_fidimag = readdlm("assets/std5_fidimag_data.txt", skipstart=2)
     ts, mx, my, mz = data_fidimag[:,1]*1e9, data_fidimag[:,5], data_fidimag[:,6], data_fidimag[:,7]

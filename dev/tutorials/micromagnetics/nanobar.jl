@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using CairoMakie
 
 mesh =  FDMesh(dx=2e-9, dy=2e-9, dz=2.5e-9, nx=30, ny=5, nz=2);

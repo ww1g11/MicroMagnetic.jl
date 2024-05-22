@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 
 mesh =  FDMesh(dx=5e-9, dy=5e-9, dz=5e-9, nx=10, ny=10, nz=1);
 
@@ -8,7 +8,7 @@ demag = add_demag(sim);
 
 zeeman = add_zeeman(sim, (0,0,1e5));
 
-MicroMag.effective_field(sim, sim.spin)
+MicroMagnetic.effective_field(sim, sim.spin)
 
 println("Demag Energy: ",sum(demag.energy), " J")
 println("Zeeman Energy: ",sum(zeeman.energy), " J")

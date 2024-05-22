@@ -4,8 +4,8 @@ using CairoMakie
 using DelimitedFiles
 using CubicSplines
 
-using MicroMag
-#MicroMag.cuda_using_double(true);
+using MicroMagnetic
+#MicroMagnetic.cuda_using_double(true);
 
 function create_sim(init_m_fun=(0,0,1))
     mesh =  FDMesh(nx=60, ny=60, nz=1, dx=2e-9, dy=2e-9, dz=2e-9, pbc="xy")

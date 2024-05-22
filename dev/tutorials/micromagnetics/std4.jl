@@ -1,4 +1,4 @@
-using MicroMag
+using MicroMagnetic
 using CairoMakie
 using DelimitedFiles
 
@@ -32,7 +32,7 @@ function plot_m_ts()
     lines!(ax, oommf[:,1]*1e9, oommf[:,3])
     lines!(ax, oommf[:,1]*1e9, oommf[:,4])
 
-    scatter!(ax, data[:,2]*1e9, data[:,4], markersize = 6, label="MicroMag")
+    scatter!(ax, data[:,2]*1e9, data[:,4], markersize = 6, label="MicroMagnetic")
     scatter!(ax, data[:,2]*1e9, data[:,5], markersize = 6)
     scatter!(ax, data[:,2]*1e9, data[:,6], markersize = 6)
 
