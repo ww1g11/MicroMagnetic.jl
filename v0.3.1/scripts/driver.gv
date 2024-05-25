@@ -1,0 +1,19 @@
+digraph G {
+  rankdir=LR
+	Driver
+	LLG [shape=box]
+	LLG_STT [shape=box]
+	EnergyMinimization [shape=box]
+	Driver -> LLG
+	Driver -> LLG_STT
+	Driver -> EnergyMinimization
+  DriverGPU
+	EnergyMinimization_GPU [shape=box]
+	LLG_GPU [shape=box]
+	LLG_STT_GPU [shape=box]
+	LLG_STT_CPP_GPU [shape=box]
+	DriverGPU -> LLG_GPU
+	DriverGPU -> LLG_STT_GPU
+	DriverGPU -> LLG_STT_CPP_GPU
+	DriverGPU -> EnergyMinimization_GPU
+}
