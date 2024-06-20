@@ -1,0 +1,17 @@
+digraph "G" {
+   AbstractSim
+   MicroSim [shape=box]
+   NEB [shape=box]
+   AbstractSimGPU
+   MicroSimGPU [shape=box]
+   AtomicSimGPU [shape=box]
+   MonteCarloGPU [shape=box]
+   NEB_GPU [shape=box]
+   AbstractSim -> MicroSim
+   AbstractSim -> NEB
+   AbstractSim -> AbstractSimGPU
+   AbstractSimGPU -> MicroSimGPU
+   AbstractSimGPU -> AtomicSimGPU
+   AbstractSimGPU -> MonteCarloGPU
+   AbstractSimGPU -> NEB_GPU
+}
