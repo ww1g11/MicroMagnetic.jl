@@ -1,0 +1,11 @@
+graph LR;
+    MicroMagnetic.jl --> Micromagnetic
+    MicroMagnetic.jl --> Atomistic
+    MicroMagnetic.jl --> Tools[Additional tools]
+    Micromagnetic --> B[Energies: exch, dmi, ...]
+    Atomistic --> B[Energies: exch, dmi, ...]
+    Micromagnetic --> D[Drivers: SD, LLG, STT, SOT]
+    Atomistic --> D[Drivers: SD, LLG, STT, SOT]
+    Micromagnetic --> O[NEB, Eigenvale method]
+    Atomistic --> O[NEB, Eigenvale method]
+    Atomistic --> M[Monte Carlo]

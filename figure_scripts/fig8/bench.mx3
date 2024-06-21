@@ -1,0 +1,33 @@
+msat  = 800e3
+aex   = 13e-12
+alpha = 0.01
+c := 4e-9
+setcellsize(c, c, c)
+setsolver(2)
+FixDt = 1e-12
+
+
+for e:=10; e>=1; e--{
+	n := e * 1000
+
+	setgridsize(n, n, 1)
+	print(n, "x", n)
+
+	steps(1) // warm-up kernel
+
+	b_ext = vector(0, 0.01, 0)
+	m=uniform(1, 0, 0) // warm-up dt
+	steps(3)
+
+	m=uniform(1, 0, 0) // start!
+	t = 0
+	start := now()
+	neval0 := Neval.get()
+
+	steps(500)
+
+	wall := since(start).Seconds() 
+	nevl := Neval.get() - neval0
+	N2 := n*n
+	fprintln("benchmark.txt", N2, nevl, N2*nevl/wall, t/nevl)
+}
