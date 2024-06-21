@@ -1,48 +1,6 @@
-name = "MicroMagnetic"
-uuid = "cef16ca0-16a8-11ef-389e-9fbcf1974e83"
-authors = ["Weiwei Wang <wangweiwei@ahu.edu.cn>", "Boyao Lv <lvboyao@mail.ustc.edu.cn>"]
-version = "0.3.4"
-
 [deps]
-KernelAbstractions = "63c18a36-062a-441e-b654-da1e3ab1ce7c"
-Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
-FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
-LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
-Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
-Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
-WriteVTK = "64499a7a-5c06-52f2-abe2-ccb03c286192"
-ReadVTK = "dc215faf-f008-4882-a9f7-a79a826fadc3"
-TimerOutputs = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
-JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+MicroMagnetic = "cef16ca0-16a8-11ef-389e-9fbcf1974e83"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 
 [compat]
 julia = "1.9"
-FFTW = "1"
-JLD2 = "0.4"
-KernelAbstractions = "0.9.2"
-TimerOutputs = "0.5"
-ReadVTK = "0.2"
-WriteVTK = "1.18"
-
-[weakdeps]
-AMDGPU = "21141c5a-9bdb-4563-92ae-f87d6854732e"
-CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
-Metal = "dde4c033-4e86-420c-a63e-0dd931031962"
-oneAPI = "8f75cd03-7ff8-4ecb-9b8f-daf728133b1b"
-CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
-
-[extensions]
-CUDAExt = "CUDA"
-AMDGPUExt = "AMDGPU"
-MetalExt = "Metal"
-oneAPIExt = "oneAPI"
-CairoMakieExt = "CairoMakie"
-
-[extras]
-DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
-Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-NPZ = "15e1cf62-19b3-5cfa-8e77-841668bca605"
-
-[targets]
-test = ["Test", "DelimitedFiles", "NPZ"]
