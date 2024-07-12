@@ -24,7 +24,7 @@ end
 
 if !isfile("assets/skx.mp4")
     run_sim(sim, steps=100, dt=1e-10, save_m_every = 1, call_back=call_back_fun)
-    jdl2movie("skx.jdl2", output="assets/skx.mp4")
+    jld2movie("skx.jld2", output="assets/skx.mp4")
 end
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
